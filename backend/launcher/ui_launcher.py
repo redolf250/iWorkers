@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'launcherBEoCQi.ui'
+## Form generated from reading UI file 'launchermeYKhU.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -72,6 +72,9 @@ class Ui_MainWindow(object):
 "")
         self.progressBar.setValue(24)
         self.progressBar.setTextVisible(False)
+        self.image = QLabel(self.main)
+        self.image.setObjectName(u"image")
+        self.image.setGeometry(QRect(870, 450, 111, 101))
 
         self.verticalLayout.addWidget(self.main)
 
@@ -86,5 +89,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>iAttend</p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>There's No Time Like The Present and No Substitute For Being Present !</p></body></html>", None))
+        self.image.setText("")
     # retranslateUi
 
