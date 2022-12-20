@@ -117,6 +117,19 @@ QProgressBar::chunk{
         <bool>false</bool>
        </property>
       </widget>
+      <widget class="QLabel" name="image">
+       <property name="geometry">
+        <rect>
+         <x>870</x>
+         <y>450</y>
+         <width>111</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
