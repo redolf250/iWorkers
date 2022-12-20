@@ -590,9 +590,6 @@ class Splash_screen(QMainWindow):
         self.ui_splash.setupUi(self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        # self.ui_splash.image.setPixmap(QPixmap.fromImage(r'backend\images\assets\photo_2022-12-15_02-36-59.jpg'))
-        # self.ui_splash.image.setScaledContents(True)
-
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
