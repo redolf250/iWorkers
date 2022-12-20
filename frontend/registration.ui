@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>700</height>
+    <height>630</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>500</width>
-    <height>700</height>
+    <height>630</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>500</width>
-    <height>700</height>
+    <height>620</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -259,7 +259,7 @@ QPushButton:hover{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>100</y>
+              <y>20</y>
               <width>441</width>
               <height>51</height>
              </rect>
@@ -277,7 +277,7 @@ QPushButton:hover{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:15px;
-	padding-left: 10px;
+	padding-left: 45px;
 }
 
 QLineEdit:hover{
@@ -299,7 +299,7 @@ QLineEdit:focus{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>240</y>
+              <y>160</y>
               <width>441</width>
               <height>51</height>
              </rect>
@@ -317,7 +317,7 @@ QLineEdit:focus{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:15px;
-		padding-left: 10px;
+		padding-left: 45px;
 }
 
 QLineEdit:hover{
@@ -339,7 +339,7 @@ QLineEdit:focus{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>380</y>
+              <y>300</y>
               <width>441</width>
               <height>51</height>
              </rect>
@@ -357,7 +357,7 @@ QLineEdit:focus{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:15px;
-		padding-left: 10px;
+		padding-left: 45px;
 }
 
 QLineEdit:hover{
@@ -379,9 +379,9 @@ QLineEdit:focus{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>450</y>
+              <y>370</y>
               <width>441</width>
-              <height>41</height>
+              <height>51</height>
              </rect>
             </property>
             <property name="font">
@@ -426,7 +426,7 @@ QPushButton:pressed{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>510</y>
+              <y>440</y>
               <width>441</width>
               <height>101</height>
              </rect>
@@ -460,7 +460,7 @@ QPushButton:pressed{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>310</y>
+              <y>230</y>
               <width>441</width>
               <height>51</height>
              </rect>
@@ -478,7 +478,7 @@ QPushButton:pressed{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:15px;
-		padding-left: 10px;
+	padding-left: 45px;
 }
 
 QLineEdit:hover{
@@ -500,7 +500,7 @@ QLineEdit:focus{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>170</y>
+              <y>90</y>
               <width>441</width>
               <height>51</height>
              </rect>
@@ -518,7 +518,7 @@ QLineEdit:focus{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:15px;
-	padding-left: 10px;
+	padding-left: 45px;
 }
 
 QLineEdit:hover{
@@ -536,38 +536,99 @@ QLineEdit:focus{
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QLabel" name="label_notification_2">
+           <widget class="QLabel" name="label_36">
             <property name="geometry">
              <rect>
-              <x>20</x>
-              <y>20</y>
-              <width>441</width>
-              <height>41</height>
+              <x>30</x>
+              <y>30</y>
+              <width>31</width>
+              <height>31</height>
              </rect>
             </property>
-            <property name="font">
-             <font>
-              <family>MS Shell Dlg 2</family>
-              <pointsize>10</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
             <property name="styleSheet">
-             <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
+             <string notr="true">background-color: rgb(45, 45, 45);</string>
             </property>
             <property name="text">
-             <string>Enter Teacher Details</string>
+             <string/>
             </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
+            <property name="pixmap">
+             <pixmap resource="../resource/asset.qrc">:/icons/asset/user.svg</pixmap>
             </property>
-            <property name="wordWrap">
-             <bool>true</bool>
+           </widget>
+           <widget class="QLabel" name="label_37">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>100</y>
+              <width>31</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(45, 45, 45);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../resource/asset.qrc">:/icons/asset/user.svg</pixmap>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_38">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>170</y>
+              <width>31</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(45, 45, 45);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../resource/asset.qrc">:/icons/asset/user.svg</pixmap>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_39">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>240</y>
+              <width>31</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(45, 45, 45);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../resource/asset.qrc">:/icons/asset/phone.svg</pixmap>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_40">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>310</y>
+              <width>31</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(45, 45, 45);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../resource/asset.qrc">:/icons/asset/users.svg</pixmap>
             </property>
            </widget>
           </widget>
@@ -582,6 +643,7 @@ QLineEdit:focus{
  </widget>
  <resources>
   <include location="../resource/asset.qrc"/>
+  <include location="../../Commons/resource/asset.qrc"/>
  </resources>
  <connections/>
 </ui>
