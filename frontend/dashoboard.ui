@@ -450,7 +450,7 @@ QPushButton:hover{
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>300</height>
+               <height>400</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -466,6 +466,9 @@ QPushButton:hover{
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
+              <property name="spacing">
+               <number>15</number>
+              </property>
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -616,6 +619,57 @@ QPushButton:pressed{
                 <property name="icon">
                  <iconset resource="../resource/asset.qrc">
                   <normaloff>:/icons/asset/user-plus.svg</normaloff>:/icons/asset/user-plus.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_send_mail">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	border: 0px solid;
+    padding-left:5px;
+}
+
+QPushButton:hover{
+	border-left: 3px solid;
+	border-left-color: rgb(0, 170, 255);
+}
+
+QPushButton:pressed{
+	border-left-color: rgb(255, 255, 255);
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resource/asset.qrc">
+                  <normaloff>:/icons/asset/mail.svg</normaloff>:/icons/asset/mail.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -3203,7 +3257,7 @@ QLineEdit:focus{
                       <rect>
                        <x>20</x>
                        <y>30</y>
-                       <width>201</width>
+                       <width>131</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -3320,9 +3374,9 @@ QLineEdit:focus{
                     <widget class="QPushButton" name="btn_backup">
                      <property name="geometry">
                       <rect>
-                       <x>280</x>
+                       <x>350</x>
                        <y>30</y>
-                       <width>201</width>
+                       <width>131</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -3364,6 +3418,53 @@ QPushButton:pressed{
                       <bool>true</bool>
                      </property>
                     </widget>
+                    <widget class="QPushButton" name="btn_mail">
+                     <property name="geometry">
+                      <rect>
+                       <x>170</x>
+                       <y>30</y>
+                       <width>161</width>
+                       <height>41</height>
+                      </rect>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Send mail</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../resource/asset.qrc">
+                       <normaloff>:/icons/asset/send.svg</normaloff>:/icons/asset/send.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
                     <zorder>label_40</zorder>
                     <zorder>label_30</zorder>
                     <zorder>frame_6</zorder>
@@ -3372,6 +3473,7 @@ QPushButton:pressed{
                     <zorder>btn_csv</zorder>
                     <zorder>filename</zorder>
                     <zorder>btn_backup</zorder>
+                    <zorder>btn_mail</zorder>
                    </widget>
                   </item>
                  </layout>
