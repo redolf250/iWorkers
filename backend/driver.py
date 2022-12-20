@@ -27,6 +27,7 @@ from PySide2.QtWidgets import *
 from PySide2.QtCore import (QPoint,Qt, QTimer)
 from PySide2.QtGui import (QColor, QPixmap, QImage)
 
+from mail.mail import Mail
 from model.attendance import Attendance
 from alert.alert_dialog import *
 from program_dept.program_dept import *
@@ -66,12 +67,17 @@ class MainWindow(QMainWindow):
         ##########################################################################################################
 
         ############################################################################################
+        self.create_program_data_dir()
         self.program_dept = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.program_dept.show())
         self.program_dept.combo_box(self.get_tables())
 
         self.register = Registration()
         self.ui.btn_register.clicked.connect(lambda: self.register.show())
+
+        self.mail = Mail()
+        self.ui.btn_mail.clicked.connect(lambda: self.mail.show())
+        self.ui.btn_send_mail.clicked.connect(lambda: self.mail.show())
         ############################################################################################
 
         ############################################################################################
@@ -99,9 +105,7 @@ class MainWindow(QMainWindow):
         self.ui.sharp_value.setText(str(self.ui.sharpness.value()))
         self.ui.contrast_value.setText(str(self.ui.contrast.value()))
         #################################################################################################
-
-        self.create_program_data_dir()
-        self.ui.btn_scan_range.clicked.connect(self.get_active_cameras)
+        self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         self.ui.database_tables.addItems(self.get_tables())
         self.ui.btn_refresh.clicked.connect(self.refresh_tables)
         ##################################################################################################
@@ -109,8 +113,7 @@ class MainWindow(QMainWindow):
     def read_only_property(self):
         if self.ui.read_only_property.isChecked():
             self.ui.late_hour.setReadOnly(True)
-            self.ui.late_minutes.setReadOnly(True)
-        
+            self.ui.late_minutes.setReadOnly(True)  
         else:
             self.ui.late_hour.setReadOnly(False)
             self.ui.late_minutes.setReadOnly(False)
@@ -119,8 +122,11 @@ class MainWindow(QMainWindow):
         self.ui.database_tables.clear()
         self.ui.database_tables.addItems(self.get_tables())
 
+    def get_path(self):
+        return 'D:\\Targets\\teachers\\backend\\sqlite\\attendance_system.db'
+
     def get_tables(self):
-        con = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        con = sqlite3.connect(self.get_path())
         cursor = con.cursor()
         sql = """SELECT name FROM sqlite_master WHERE type = 'table';"""
         my_cursor = cursor.execute(sql)
@@ -141,7 +147,7 @@ class MainWindow(QMainWindow):
 
     def backup_database(self):
         path='C:\\ProgramData\\iTeachers\\data\\backup'
-        db_path = r'backend\\sqlite\\attendance_system.db'
+        db_path = self.get_path()
         if os.path.exists(path):
             shutil.copy2(db_path,path)
             self.backup_history()
@@ -165,17 +171,20 @@ class MainWindow(QMainWindow):
             db.commit()
             return details
 
-    def get_active_cameras(self):
-        scan_range=self.ui.scan_range.text()
+    def get_active_cameras(self,camera:list):
+        self.ui.comboBox.clear()
+        self.ui.comboBox.addItems(camera)
+        count = [self.ui.comboBox.itemText(i) for i in range(self.ui.comboBox.count())]
+        self.ui.scan_range_label.setText("Active camera(s): "+str(len(count)))
+        self.ui.label_notification.setText("Done scanning for available cameras...")           
+
+    def camera_thread(self):
+        scan_range = self.ui.scan_range.text()
         if scan_range:
-            for camera in range(int(scan_range)):
-                capture = VideoCapture(camera)
-                valid_cameras = []
-                if capture.isOpened():
-                    valid_cameras.append(camera)
-                    data=[str(x) for x in valid_cameras]
-                    self.ui.comboBox.addItems(data)
-                    self.ui.scan_range_label.setText("Active camera(s): "+str(len(data)))
+            self.active = ActiveCameras(scan_range)
+            self.active.start()
+            self.active.cameras.connect(self.get_active_cameras)
+            self.ui.label_notification.setText("Scanning for available cameras...")
         else:
             self.alert_builder("Oops! no scan range provided...")
     
@@ -186,13 +195,56 @@ class MainWindow(QMainWindow):
            
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iTeachers\\data'
-        list =('csv_export','backup','QR_Codes')
+        list =('csv_export','backup','QR_Codes','email_details')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
             path = os.path.join(root_dir,item)
             if not os.path.exists(path):
                 os.mkdir(path)
+        self.create_files()
+
+    def create_files(self):
+        details_path =Path('C:\\ProgramData\\iTeachers\\data\\email_details\\detail.txt')
+        details_path.touch(exist_ok=True)
+        d_file = open(details_path)
+        if os.path.exists(details_path):
+            with open(details_path,'a+') as d_file:
+                if os.path.getsize(details_path)==0:
+                    d_file.write("Subject,example@gmail.mail,Sender,Password")
+            d_file.close() 
+
+        content = """
+        Hello name,
+                Please attached to this message is your
+            attendance code. Please keep it safe as you 
+            will need this everytime you would want to 
+            access the facility. 
+                Attend Today, Acheive Tomorrow!
+                                            Thank you! """
+        content_path =Path('C:\\ProgramData\\iTeachers\\data\\email_details\\content.txt')
+        content_path.touch(exist_ok=True)
+        content_file = open(content_path)
+        if os.path.exists(content_path):
+            with open(content_path,'a+') as content_file:
+                if os.path.getsize(content_path)==0:
+                    content_file.write(content)
+            content_file.close() 
+
+        report_content = """
+        Hello name,
+    	        Please attached to this message is the
+            report or data you requested for. Feel free 
+            to contact us for our services at anytime.
+                                        Thank you! """
+        content_path =Path('C:\\ProgramData\\iTeachers\\data\\email_details\\content_report.txt')
+        content_path.touch(exist_ok=True)
+        content_file = open(content_path)
+        if os.path.exists(content_path):
+            with open(content_path,'a+') as content_file:
+                if  os.path.getsize(content_path)==0:
+                    content_file.write(report_content)
+            content_file.close()
 
     def export_data_to_csv(self):
         table=self.ui.tableWidget.item(0,0)
@@ -213,7 +265,7 @@ class MainWindow(QMainWindow):
             self.alert.show()
         
     def query_database(self, query: str):
-        db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        db = sqlite3.connect(self.get_path())
         my_cursor = db.cursor()
         details = []
         cursor = my_cursor.execute(query)
@@ -332,11 +384,11 @@ class MainWindow(QMainWindow):
         self.ui.refrence.setText(str(data['reference']))
         self.ui.contact.setText(str(data['contact']))
         self.ui.incharge.setText(data['incharge'])
-        self.ui.image.setPixmap(QPixmap.fromImage(r'backend\\images\\assets\\img.jpg'))
+        self.ui.image.setPixmap(QPixmap.fromImage('D:\\Targets\\teachers\\backend\\images\\assets\\img.jpg'))
         self.ui.image.setScaledContents(True)
                         
     def mark_attendance_db(self):
-        db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        db = sqlite3.connect(os.path.abspath(self.get_path()))
         my_cursor = db.cursor()
         table = self.ui.database_tables.currentText()
         name = self.ui.firstname.text()+" "+self.ui.middlename.text()+" "+self.ui.lastname.text()
@@ -347,7 +399,7 @@ class MainWindow(QMainWindow):
         
         if hour<=late_hour and minute<=late_minute:
             self.ui.status.setText("Early")
-        elif hour<=late_hour and minute>=late_minute:
+        else:
             self.ui.status.setText("Late")
             
         attendance = Attendance(
@@ -538,6 +590,8 @@ class Splash_screen(QMainWindow):
         self.ui_splash.setupUi(self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        # self.ui_splash.image.setPixmap(QPixmap.fromImage(r'backend\images\assets\photo_2022-12-15_02-36-59.jpg'))
+        # self.ui_splash.image.setScaledContents(True)
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
