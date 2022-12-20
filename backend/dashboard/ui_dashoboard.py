@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardUpHAmz.ui'
+## Form generated from reading UI file 'dashoboardUevmLM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -192,11 +192,12 @@ class Ui_dashboard(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 3)
         self.frame = QFrame(self.menu_frame)
         self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(0, 300))
+        self.frame.setMinimumSize(QSize(0, 400))
         self.frame.setMaximumSize(QSize(16777215, 300))
         self.frame.setFrameShape(QFrame.NoFrame)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame)
+        self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, -1, 0, -1)
         self.btn_home = QPushButton(self.frame)
@@ -284,6 +285,33 @@ class Ui_dashboard(object):
 
         self.verticalLayout.addWidget(self.btn_register)
 
+        self.btn_send_mail = QPushButton(self.frame)
+        self.btn_send_mail.setObjectName(u"btn_send_mail")
+        self.btn_send_mail.setMinimumSize(QSize(0, 70))
+        self.btn_send_mail.setMaximumSize(QSize(16777215, 70))
+        self.btn_send_mail.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 0px solid;\n"
+"    padding-left:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-left: 3px solid;\n"
+"	border-left-color: rgb(0, 170, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border-left-color: rgb(255, 255, 255);\n"
+"}")
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/asset/mail.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_send_mail.setIcon(icon3)
+        self.btn_send_mail.setIconSize(QSize(40, 40))
+        self.btn_send_mail.setCheckable(True)
+        self.btn_send_mail.setFlat(True)
+
+        self.verticalLayout.addWidget(self.btn_send_mail)
+
 
         self.verticalLayout_3.addWidget(self.frame, 0, Qt.AlignTop)
 
@@ -302,9 +330,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/asset/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_help.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/asset/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_help.setIcon(icon4)
         self.btn_help.setIconSize(QSize(40, 40))
         self.btn_help.setFlat(True)
 
@@ -536,9 +564,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/asset/video.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_connect_detect.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/asset/video.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_connect_detect.setIcon(icon5)
         self.btn_connect_detect.setIconSize(QSize(30, 30))
         self.btn_connect_detect.setFlat(True)
         self.label_27 = QLabel(self.frame_3)
@@ -563,9 +591,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon5 = QIcon()
-        icon5.addFile(u":/icons/asset/video-off.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_disconnect.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/asset/video-off.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_disconnect.setIcon(icon6)
         self.btn_disconnect.setIconSize(QSize(30, 30))
         self.btn_disconnect.setFlat(True)
         self.comboBox = QComboBox(self.frame_3)
@@ -627,9 +655,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/asset/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_clear_label.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/asset/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_clear_label.setIcon(icon7)
         self.btn_clear_label.setIconSize(QSize(30, 30))
         self.btn_clear_label.setFlat(True)
         self.btn_open_database = QPushButton(self.frame_3)
@@ -650,9 +678,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon7 = QIcon()
-        icon7.addFile(u":/icons/asset/database.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_open_database.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/asset/database.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_open_database.setIcon(icon8)
         self.btn_open_database.setIconSize(QSize(30, 30))
         self.btn_open_database.setFlat(True)
         self.firstname_25 = QLabel(self.frame_3)
@@ -697,9 +725,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_refresh.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_refresh.setIcon(icon9)
         self.btn_refresh.setIconSize(QSize(30, 30))
         self.btn_refresh.setFlat(True)
         self.firstname_26 = QLabel(self.frame_3)
@@ -1357,7 +1385,7 @@ class Ui_dashboard(object):
         self.label_30.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.btn_csv = QPushButton(self.bottom)
         self.btn_csv.setObjectName(u"btn_csv")
-        self.btn_csv.setGeometry(QRect(20, 30, 201, 41))
+        self.btn_csv.setGeometry(QRect(20, 30, 131, 41))
         self.btn_csv.setFont(font4)
         self.btn_csv.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1373,9 +1401,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/icons/asset/file.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_csv.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/icons/asset/file.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_csv.setIcon(icon10)
         self.btn_csv.setIconSize(QSize(30, 30))
         self.btn_csv.setFlat(True)
         self.label_40 = QLabel(self.bottom)
@@ -1411,7 +1439,7 @@ class Ui_dashboard(object):
         self.filename.setClearButtonEnabled(True)
         self.btn_backup = QPushButton(self.bottom)
         self.btn_backup.setObjectName(u"btn_backup")
-        self.btn_backup.setGeometry(QRect(280, 30, 201, 41))
+        self.btn_backup.setGeometry(QRect(350, 30, 131, 41))
         self.btn_backup.setFont(font4)
         self.btn_backup.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1427,9 +1455,32 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_backup.setIcon(icon7)
+        self.btn_backup.setIcon(icon8)
         self.btn_backup.setIconSize(QSize(30, 30))
         self.btn_backup.setFlat(True)
+        self.btn_mail = QPushButton(self.bottom)
+        self.btn_mail.setObjectName(u"btn_mail")
+        self.btn_mail.setGeometry(QRect(170, 30, 161, 41))
+        self.btn_mail.setFont(font4)
+        self.btn_mail.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        icon11 = QIcon()
+        icon11.addFile(u":/icons/asset/send.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_mail.setIcon(icon11)
+        self.btn_mail.setIconSize(QSize(30, 30))
+        self.btn_mail.setFlat(True)
         self.label_40.raise_()
         self.label_30.raise_()
         self.frame_6.raise_()
@@ -1438,6 +1489,7 @@ class Ui_dashboard(object):
         self.btn_csv.raise_()
         self.filename.raise_()
         self.btn_backup.raise_()
+        self.btn_mail.raise_()
 
         self.verticalLayout_9.addWidget(self.bottom)
 
@@ -1537,6 +1589,7 @@ class Ui_dashboard(object):
         self.btn_home.setText("")
         self.btn_search.setText("")
         self.btn_register.setText("")
+        self.btn_send_mail.setText("")
         self.btn_help.setText("")
         self.image.setText("")
         self.firstname.setText(QCoreApplication.translate("dashboard", u"Firstname", None))
@@ -1596,6 +1649,7 @@ class Ui_dashboard(object):
         self.label_40.setText("")
         self.filename.setPlaceholderText(QCoreApplication.translate("dashboard", u"Filename?", None))
         self.btn_backup.setText(QCoreApplication.translate("dashboard", u"Backup", None))
+        self.btn_mail.setText(QCoreApplication.translate("dashboard", u"Send mail", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("dashboard", u"Reference", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
