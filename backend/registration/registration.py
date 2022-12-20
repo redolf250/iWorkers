@@ -3,7 +3,8 @@ import math
 import qrcode
 import numpy as np
 from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from model.teacher import Registration_
 from registration.ui_registration import Ui_Registration
@@ -52,10 +53,8 @@ class Registration(QtWidgets.QDialog):
             image = qrcode.make(teacher_json)
             image.save('C:\\ProgramData\\iteachers\\data\\QR_Codes\\'+register.t_firstname+"_"+register.t_lastname+"_"+register.t_reference+".png")
             self.ui_registration.label_notification.setText("Hey! you have successfully registered...")
-            print(teacher_json)
         else:
             self.ui_registration.label_notification.setText("Oops! provide valid registration details...")
-     
 
     def convert_to_json(self, teacher:Registration_):
         to_json = json.dumps(teacher)
@@ -78,4 +77,3 @@ class Registration(QtWidgets.QDialog):
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
 
-    

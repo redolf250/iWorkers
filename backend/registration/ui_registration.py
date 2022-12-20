@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'registrationacHtbm.ui'
+## Form generated from reading UI file 'registrationlErNgC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -16,14 +16,15 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 import asset_rc
+import asset_rc
 
 class Ui_Registration(object):
     def setupUi(self, Registration):
         if Registration.objectName():
             Registration.setObjectName(u"Registration")
-        Registration.resize(500, 700)
-        Registration.setMinimumSize(QSize(500, 700))
-        Registration.setMaximumSize(QSize(500, 700))
+        Registration.resize(500, 630)
+        Registration.setMinimumSize(QSize(500, 630))
+        Registration.setMaximumSize(QSize(500, 620))
         self.verticalLayout = QVBoxLayout(Registration)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame = QFrame(Registration)
@@ -137,7 +138,7 @@ class Ui_Registration(object):
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.t_firstname = QLineEdit(self.frame_4)
         self.t_firstname.setObjectName(u"t_firstname")
-        self.t_firstname.setGeometry(QRect(20, 100, 441, 51))
+        self.t_firstname.setGeometry(QRect(20, 20, 441, 51))
         font1 = QFont()
         font1.setPointSize(10)
         self.t_firstname.setFont(font1)
@@ -146,7 +147,7 @@ class Ui_Registration(object):
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:15px;\n"
-"	padding-left: 10px;\n"
+"	padding-left: 45px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -159,14 +160,14 @@ class Ui_Registration(object):
         self.t_firstname.setClearButtonEnabled(True)
         self.t_lastname = QLineEdit(self.frame_4)
         self.t_lastname.setObjectName(u"t_lastname")
-        self.t_lastname.setGeometry(QRect(20, 240, 441, 51))
+        self.t_lastname.setGeometry(QRect(20, 160, 441, 51))
         self.t_lastname.setFont(font1)
         self.t_lastname.setTabletTracking(True)
         self.t_lastname.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:15px;\n"
-"		padding-left: 10px;\n"
+"		padding-left: 45px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -179,14 +180,14 @@ class Ui_Registration(object):
         self.t_lastname.setClearButtonEnabled(True)
         self.t_incharge = QLineEdit(self.frame_4)
         self.t_incharge.setObjectName(u"t_incharge")
-        self.t_incharge.setGeometry(QRect(20, 380, 441, 51))
+        self.t_incharge.setGeometry(QRect(20, 300, 441, 51))
         self.t_incharge.setFont(font1)
         self.t_incharge.setTabletTracking(True)
         self.t_incharge.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:15px;\n"
-"		padding-left: 10px;\n"
+"		padding-left: 45px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -199,7 +200,7 @@ class Ui_Registration(object):
         self.t_incharge.setClearButtonEnabled(True)
         self.btn_register = QPushButton(self.frame_4)
         self.btn_register.setObjectName(u"btn_register")
-        self.btn_register.setGeometry(QRect(20, 450, 441, 41))
+        self.btn_register.setGeometry(QRect(20, 370, 441, 51))
         self.btn_register.setFont(font1)
         self.btn_register.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -222,7 +223,7 @@ class Ui_Registration(object):
         self.btn_register.setFlat(True)
         self.label_notification = QLabel(self.frame_4)
         self.label_notification.setObjectName(u"label_notification")
-        self.label_notification.setGeometry(QRect(20, 510, 441, 101))
+        self.label_notification.setGeometry(QRect(20, 440, 441, 101))
         font2 = QFont()
         font2.setFamily(u"MS Shell Dlg 2")
         font2.setPointSize(10)
@@ -238,14 +239,14 @@ class Ui_Registration(object):
         self.label_notification.setWordWrap(True)
         self.t_contact = QLineEdit(self.frame_4)
         self.t_contact.setObjectName(u"t_contact")
-        self.t_contact.setGeometry(QRect(20, 310, 441, 51))
+        self.t_contact.setGeometry(QRect(20, 230, 441, 51))
         self.t_contact.setFont(font1)
         self.t_contact.setTabletTracking(True)
         self.t_contact.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:15px;\n"
-"		padding-left: 10px;\n"
+"	padding-left: 45px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -258,14 +259,14 @@ class Ui_Registration(object):
         self.t_contact.setClearButtonEnabled(True)
         self.t_middlename = QLineEdit(self.frame_4)
         self.t_middlename.setObjectName(u"t_middlename")
-        self.t_middlename.setGeometry(QRect(20, 170, 441, 51))
+        self.t_middlename.setGeometry(QRect(20, 90, 441, 51))
         self.t_middlename.setFont(font1)
         self.t_middlename.setTabletTracking(True)
         self.t_middlename.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:15px;\n"
-"	padding-left: 10px;\n"
+"	padding-left: 45px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -276,17 +277,31 @@ class Ui_Registration(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.t_middlename.setClearButtonEnabled(True)
-        self.label_notification_2 = QLabel(self.frame_4)
-        self.label_notification_2.setObjectName(u"label_notification_2")
-        self.label_notification_2.setGeometry(QRect(20, 20, 441, 41))
-        self.label_notification_2.setFont(font2)
-        self.label_notification_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.label_notification_2.setAlignment(Qt.AlignCenter)
-        self.label_notification_2.setWordWrap(True)
+        self.label_36 = QLabel(self.frame_4)
+        self.label_36.setObjectName(u"label_36")
+        self.label_36.setGeometry(QRect(30, 30, 31, 31))
+        self.label_36.setStyleSheet(u"background-color: rgb(45, 45, 45);")
+        self.label_36.setPixmap(QPixmap(u":/icons/asset/user.svg"))
+        self.label_37 = QLabel(self.frame_4)
+        self.label_37.setObjectName(u"label_37")
+        self.label_37.setGeometry(QRect(30, 100, 31, 31))
+        self.label_37.setStyleSheet(u"background-color: rgb(45, 45, 45);")
+        self.label_37.setPixmap(QPixmap(u":/icons/asset/user.svg"))
+        self.label_38 = QLabel(self.frame_4)
+        self.label_38.setObjectName(u"label_38")
+        self.label_38.setGeometry(QRect(30, 170, 31, 31))
+        self.label_38.setStyleSheet(u"background-color: rgb(45, 45, 45);")
+        self.label_38.setPixmap(QPixmap(u":/icons/asset/user.svg"))
+        self.label_39 = QLabel(self.frame_4)
+        self.label_39.setObjectName(u"label_39")
+        self.label_39.setGeometry(QRect(30, 240, 31, 31))
+        self.label_39.setStyleSheet(u"background-color: rgb(45, 45, 45);")
+        self.label_39.setPixmap(QPixmap(u":/icons/asset/phone.svg"))
+        self.label_40 = QLabel(self.frame_4)
+        self.label_40.setObjectName(u"label_40")
+        self.label_40.setGeometry(QRect(30, 310, 31, 31))
+        self.label_40.setStyleSheet(u"background-color: rgb(45, 45, 45);")
+        self.label_40.setPixmap(QPixmap(u":/icons/asset/users.svg"))
 
         self.verticalLayout_2.addWidget(self.frame_4)
 
@@ -316,6 +331,10 @@ class Ui_Registration(object):
         self.label_notification.setText(QCoreApplication.translate("Registration", u"Notification", None))
         self.t_contact.setPlaceholderText(QCoreApplication.translate("Registration", u"Contact", None))
         self.t_middlename.setPlaceholderText(QCoreApplication.translate("Registration", u"Middlename", None))
-        self.label_notification_2.setText(QCoreApplication.translate("Registration", u"Enter Teacher Details", None))
+        self.label_36.setText("")
+        self.label_37.setText("")
+        self.label_38.setText("")
+        self.label_39.setText("")
+        self.label_40.setText("")
     # retranslateUi
 
