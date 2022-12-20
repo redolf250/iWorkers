@@ -28,6 +28,7 @@ from PySide2.QtCore import (QPoint,Qt, QTimer)
 from PySide2.QtGui import (QColor, QPixmap, QImage)
 
 from mail.mail import Mail
+from scan_devices.camera import ActiveCameras
 from model.attendance import Attendance
 from alert.alert_dialog import *
 from program_dept.program_dept import *
@@ -160,7 +161,7 @@ class MainWindow(QMainWindow):
             self.alert.show()
 
     def get_dept_program(self,table:str):
-        db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        db = sqlite3.connect(self.get_path())
         cursor = db.cursor()
         cursor.execute("SELECT * FROM "+table)
         details = []
@@ -324,7 +325,7 @@ class MainWindow(QMainWindow):
             self.alert.show()
     
     def fetch_data_from_db(self,reference):
-        db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        db = sqlite3.connect(self.get_path())
         my_cursor = db.cursor()
         table = self.ui.database_tables.currentText()
         detail =my_cursor.execute("SELECT * FROM "+table+" WHERE teacher_reference="+reference)
