@@ -148,7 +148,7 @@ class MainWindow(QMainWindow):
             details=self.query_summary_data()
             data = pd.DataFrame(details)
             data.to_csv(path,sep=',',index=False,
-            header=['Name','Contact','Early count','Late count','Total count'])
+            header=['Name','Contact','Date stamp','Time stamp','Date stamp','Time stamp','Early count','Late count','Total count'])
             self.alert = AlertDialog()
             self.alert.content("Hey! data to exported successfully...")
             self.alert.show()
@@ -167,27 +167,39 @@ class MainWindow(QMainWindow):
         early = []
         late = []
         transform = []
+        early_data = []
+        late_data = []
         for teacher_reference in range(len(results)):
             teacher_list= self.query_database("SELECT teacher_name,teacher_contact,COUNT(teacher_status) as active FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" ORDER BY teacher_name DESC")
             early_status= self.query_database("SELECT COUNT(teacher_status) as active FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" and teacher_status='Early'"+" ORDER BY teacher_name DESC")
             late_status= self.query_database("SELECT COUNT(teacher_status) as active FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" and teacher_status='Late'"+" ORDER BY teacher_name DESC")
+            early_result = self.query_database("SELECT date_stamp_,time_stamp FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" ORDER BY time_stamp ASC LIMIT 1")
+            late_result = self.query_database("SELECT date_stamp_,time_stamp FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" ORDER BY time_stamp DESC LIMIT 1")
             data.append(teacher_list[0])
             early.append(early_status[0])
             late.append(late_status[0])
+            early_data.append(early_result[0])
+            late_data.append(late_result[0])
     
         for item in data:
-            transform.append([str(item[0]),str(item[1]),str(early[data.index(item)][0]),str(late[data.index(item)][0]),str(item[2])])
+            transform.append([str(item[0]),str(item[1]),str(early_data[data.index(item)][0]),
+                str(early_data[data.index(item)][1]),str(late_data[data.index(item)][0]),
+                str(late_data[data.index(item)][1]),str(early[data.index(item)][0]),
+                str(late[data.index(item)][0]),str(item[2])])
         return transform
-        
+
     def summary_table(self,details:list):
         self.ui.tableWidget_summary.setAutoScroll(True)
         self.ui.tableWidget_summary.setAutoScrollMargin(2)
         self.ui.tableWidget_summary.setTabKeyNavigation(True)
-        self.ui.tableWidget_summary.setColumnWidth(0,400)
-        self.ui.tableWidget_summary.setColumnWidth(1,240)
-        self.ui.tableWidget_summary.setColumnWidth(2,240)
-        self.ui.tableWidget_summary.setColumnWidth(3,240)
-        self.ui.tableWidget_summary.setColumnWidth(4,240)
+        self.ui.tableWidget_summary.setColumnWidth(0,270)
+        self.ui.tableWidget_summary.setColumnWidth(2,180)
+        self.ui.tableWidget_summary.setColumnWidth(3,120)
+        self.ui.tableWidget_summary.setColumnWidth(4,180)
+        self.ui.tableWidget_summary.setColumnWidth(5,120)
+        self.ui.tableWidget_summary.setColumnWidth(6,120)
+        self.ui.tableWidget_summary.setColumnWidth(7,120)
+        self.ui.tableWidget_summary.setColumnWidth(8,110)
         self.ui.tableWidget_summary.setRowCount(len(details))
         self.ui.tableWidget_summary.verticalHeader().setVisible(True)
         row_count = 0
@@ -197,6 +209,10 @@ class MainWindow(QMainWindow):
             self.ui.tableWidget_summary.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
             self.ui.tableWidget_summary.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
             self.ui.tableWidget_summary.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
+            self.ui.tableWidget_summary.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
+            self.ui.tableWidget_summary.setItem(row_count,6,QtWidgets.QTableWidgetItem(str(data[6])))
+            self.ui.tableWidget_summary.setItem(row_count,7,QtWidgets.QTableWidgetItem(str(data[7])))
+            self.ui.tableWidget_summary.setItem(row_count,8,QtWidgets.QTableWidgetItem(str(data[8])))
             row_count = row_count+1
 
     def read_only_property(self):
