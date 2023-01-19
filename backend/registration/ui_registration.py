@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'registrationlErNgC.ui'
+## Form generated from reading UI file 'registrationGFulzk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -330,7 +330,7 @@ class Ui_Registration(object):
         self.btn_register.setText(QCoreApplication.translate("Registration", u"Register", None))
         self.label_notification.setText(QCoreApplication.translate("Registration", u"Notification", None))
         self.t_contact.setPlaceholderText(QCoreApplication.translate("Registration", u"Contact", None))
-        self.t_middlename.setPlaceholderText(QCoreApplication.translate("Registration", u"Middlename", None))
+        self.t_middlename.setPlaceholderText(QCoreApplication.translate("Registration", u"Middle name", None))
         self.label_36.setText("")
         self.label_37.setText("")
         self.label_38.setText("")
