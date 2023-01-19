@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboarduWfIeb.ui'
+## Form generated from reading UI file 'dashoboardmXFQvg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1741,8 +1741,8 @@ class Ui_dashboard(object):
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.tableWidget_summary = QTableWidget(self.frame_8)
-        if (self.tableWidget_summary.columnCount() < 5):
-            self.tableWidget_summary.setColumnCount(5)
+        if (self.tableWidget_summary.columnCount() < 9):
+            self.tableWidget_summary.setColumnCount(9)
         __qtablewidgetitem7 = QTableWidgetItem()
         __qtablewidgetitem7.setFont(font4);
         self.tableWidget_summary.setHorizontalHeaderItem(0, __qtablewidgetitem7)
@@ -1758,6 +1758,18 @@ class Ui_dashboard(object):
         __qtablewidgetitem11 = QTableWidgetItem()
         __qtablewidgetitem11.setFont(font4);
         self.tableWidget_summary.setHorizontalHeaderItem(4, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        __qtablewidgetitem12.setFont(font4);
+        self.tableWidget_summary.setHorizontalHeaderItem(5, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        __qtablewidgetitem13.setFont(font4);
+        self.tableWidget_summary.setHorizontalHeaderItem(6, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        __qtablewidgetitem14.setFont(font4);
+        self.tableWidget_summary.setHorizontalHeaderItem(7, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        __qtablewidgetitem15.setFont(font4);
+        self.tableWidget_summary.setHorizontalHeaderItem(8, __qtablewidgetitem15)
         self.tableWidget_summary.setObjectName(u"tableWidget_summary")
         self.tableWidget_summary.setFont(font10)
         self.tableWidget_summary.setStyleSheet(u"QTableWidget{\n"
@@ -1767,7 +1779,7 @@ class Ui_dashboard(object):
         self.tableWidget_summary.setFrameShape(QFrame.NoFrame)
         self.tableWidget_summary.setFrameShadow(QFrame.Plain)
         self.tableWidget_summary.setSortingEnabled(True)
-        self.tableWidget_summary.horizontalHeader().setDefaultSectionSize(280)
+        self.tableWidget_summary.horizontalHeader().setDefaultSectionSize(155)
         self.tableWidget_summary.horizontalHeader().setProperty("showSortIndicator", True)
         self.tableWidget_summary.horizontalHeader().setStretchLastSection(True)
         self.tableWidget_summary.verticalHeader().setProperty("showSortIndicator", True)
@@ -1794,7 +1806,7 @@ class Ui_dashboard(object):
 
         self.retranslateUi(dashboard)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(dashboard)
@@ -1897,10 +1909,18 @@ class Ui_dashboard(object):
         ___qtablewidgetitem8 = self.tableWidget_summary.horizontalHeaderItem(1)
         ___qtablewidgetitem8.setText(QCoreApplication.translate("dashboard", u"Contact", None));
         ___qtablewidgetitem9 = self.tableWidget_summary.horizontalHeaderItem(2)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("dashboard", u"Early count", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("dashboard", u"Date stamp", None));
         ___qtablewidgetitem10 = self.tableWidget_summary.horizontalHeaderItem(3)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("dashboard", u"Late count", None));
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("dashboard", u"Time stamp", None));
         ___qtablewidgetitem11 = self.tableWidget_summary.horizontalHeaderItem(4)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("dashboard", u"Total count", None));
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("dashboard", u"Date stamp", None));
+        ___qtablewidgetitem12 = self.tableWidget_summary.horizontalHeaderItem(5)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("dashboard", u"Time stamp", None));
+        ___qtablewidgetitem13 = self.tableWidget_summary.horizontalHeaderItem(6)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("dashboard", u"Early count", None));
+        ___qtablewidgetitem14 = self.tableWidget_summary.horizontalHeaderItem(7)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("dashboard", u"Late count", None));
+        ___qtablewidgetitem15 = self.tableWidget_summary.horizontalHeaderItem(8)
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("dashboard", u"Total count", None));
     # retranslateUi
 
