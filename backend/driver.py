@@ -6,6 +6,7 @@
 ##
 ################################################################################
 
+import csv
 import os
 import sys
 import cv2
@@ -65,6 +66,7 @@ class MainWindow(QMainWindow):
         #########################################################################################################
         self.ui.btn_home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home))
         self.ui.btn_search.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.search))
+        self.ui.btn_summary.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.summary))
         ##########################################################################################################
 
         ############################################################################################
@@ -108,8 +110,94 @@ class MainWindow(QMainWindow):
         #################################################################################################
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         self.ui.database_tables.addItems(self.get_tables())
+        self.ui.database_summary.addItems(self.get_tables())
         self.ui.btn_refresh.clicked.connect(self.refresh_tables)
+        self.ui.btn_summary_load.clicked.connect(self.render_teacher_data)
+        self.ui.btn_summary_save.clicked.connect(self.export_summary_data)
+        self.ui.btn_summary_browse.clicked.connect(self.load_data)
         ##################################################################################################
+
+    def load_data(self):
+        file_type = "CSV Files(*.csv)"   
+        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
+        if path:
+            self.ui.summary_browse.setText(path[0])
+            try:
+                with open(path[0],'r') as data:
+                    self.alert = AlertDialog()
+                    self.alert.content("Please the header was skipped...")
+                    self.alert.show()
+                    student_data = csv.reader(data)
+                    next(student_data)
+                    teacher_list = []
+                    for row in student_data:
+                        teacher_list.append(row)
+                    if len(teacher_list):
+                        self.summary_table(teacher_list)
+            except Exception as e:
+                print(str(e))
+            return path[0]
+        pass
+
+    def export_summary_data(self):
+        table=self.ui.tableWidget_summary.item(0,0)
+        filename = self.ui.summary_filename.text()
+        date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        path = 'C:\\ProgramData\\iTeachers\\data\\csv_export\\'+filename+date+'.csv'
+        if table and filename:
+            details=self.query_summary_data()
+            data = pd.DataFrame(details)
+            data.to_csv(path,sep=',',index=False,
+            header=['Name','Contact','Early count','Late count','Total count'])
+            self.alert = AlertDialog()
+            self.alert.content("Hey! data to exported successfully...")
+            self.alert.show()
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! you have no data to export\nor provide filename...")
+            self.alert.show()
+        
+    def render_teacher_data(self):
+        self.summary_table(self.query_summary_data())
+
+    def query_summary_data(self):
+        table_name = self.ui.database_summary.currentText()
+        results= self.query_database("SELECT DISTINCT teacher_reference FROM "+table_name)
+        data = []
+        early = []
+        late = []
+        transform = []
+        for teacher_reference in range(len(results)):
+            teacher_list= self.query_database("SELECT teacher_name,teacher_contact,COUNT(teacher_status) as active FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" ORDER BY teacher_name DESC")
+            early_status= self.query_database("SELECT COUNT(teacher_status) as active FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" and teacher_status='Early'"+" ORDER BY teacher_name DESC")
+            late_status= self.query_database("SELECT COUNT(teacher_status) as active FROM "+table_name+" WHERE teacher_reference="+results[teacher_reference][0]+" and teacher_status='Late'"+" ORDER BY teacher_name DESC")
+            data.append(teacher_list[0])
+            early.append(early_status[0])
+            late.append(late_status[0])
+    
+        for item in data:
+            transform.append([str(item[0]),str(item[1]),str(early[data.index(item)][0]),str(late[data.index(item)][0]),str(item[2])])
+        return transform
+        
+    def summary_table(self,details:list):
+        self.ui.tableWidget_summary.setAutoScroll(True)
+        self.ui.tableWidget_summary.setAutoScrollMargin(2)
+        self.ui.tableWidget_summary.setTabKeyNavigation(True)
+        self.ui.tableWidget_summary.setColumnWidth(0,400)
+        self.ui.tableWidget_summary.setColumnWidth(1,240)
+        self.ui.tableWidget_summary.setColumnWidth(2,240)
+        self.ui.tableWidget_summary.setColumnWidth(3,240)
+        self.ui.tableWidget_summary.setColumnWidth(4,240)
+        self.ui.tableWidget_summary.setRowCount(len(details))
+        self.ui.tableWidget_summary.verticalHeader().setVisible(True)
+        row_count = 0
+        for data in details:
+            self.ui.tableWidget_summary.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[0])))
+            self.ui.tableWidget_summary.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[1])))
+            self.ui.tableWidget_summary.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
+            self.ui.tableWidget_summary.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
+            self.ui.tableWidget_summary.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
+            row_count = row_count+1
 
     def read_only_property(self):
         if self.ui.read_only_property.isChecked():
