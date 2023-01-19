@@ -530,7 +530,7 @@ QLineEdit:focus{
 }</string>
             </property>
             <property name="placeholderText">
-             <string>Middlename</string>
+             <string>Middle name</string>
             </property>
             <property name="clearButtonEnabled">
              <bool>true</bool>
