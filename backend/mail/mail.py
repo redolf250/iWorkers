@@ -44,7 +44,7 @@ class Mail(QtWidgets.QDialog):
 
     def browse_files(self): 
         file_type = "PNG Files(*.png);;CSV Files(*.csv)"   
-        path= QFileDialog.getOpenFileName(self, "Select File","C:\\ProgramData\\iTeachers\\data",file_type)
+        path= QFileDialog.getOpenFileName(self, "Select File","C:\\ProgramData\\iAttend\\data",file_type)
         if path:
             self.ui_mail.image_file_reg.setText(path[0])
             return path[0]
@@ -72,14 +72,14 @@ class Mail(QtWidgets.QDialog):
         self.ui_mail.sender_password.setText(details[3])
     
     def get_details(self):
-        path = 'C:\\ProgramData\\iTeachers\\data\\email_details\\detail.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read().split(',')
             return details
     
     def get_mail_content(self):
-        path = 'C:\\ProgramData\\iTeachers\\data\\email_details\\content_report.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\content_report.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read()
