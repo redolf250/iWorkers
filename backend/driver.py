@@ -143,7 +143,7 @@ class MainWindow(QMainWindow):
         table=self.ui.tableWidget_summary.item(0,0)
         filename = self.ui.summary_filename.text()
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iTeachers\\data\\csv_export\\'+filename+date+'.csv'
+        path = 'C:\\ProgramData\\iAttend\\data\\csv_export\\'+filename+date+'.csv'
         if table and filename:
             details=self.query_summary_data()
             data = pd.DataFrame(details)
@@ -240,7 +240,7 @@ class MainWindow(QMainWindow):
         return details
 
     def backup_history(self):
-        path =Path('C:\\ProgramData\\iTeachers\\data\\backup\\backup_history.txt')
+        path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
         path.touch(exist_ok=True)
         file = open(path)
         time =dt.now().time().strftime('%I:%M:%S %p')
@@ -251,7 +251,7 @@ class MainWindow(QMainWindow):
             file.close()         
 
     def backup_database(self):
-        path='C:\\ProgramData\\iTeachers\\data\\backup'
+        path='C:\\ProgramData\\iAttend\\data\\backup'
         db_path = self.get_path()
         if os.path.exists(path):
             shutil.copy2(db_path,path)
@@ -299,7 +299,7 @@ class MainWindow(QMainWindow):
         self.alert.show()
            
     def create_program_data_dir(self):
-        root_dir = 'C:\\ProgramData\\iTeachers\\data'
+        root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('csv_export','backup','QR_Codes','email_details')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
@@ -310,7 +310,7 @@ class MainWindow(QMainWindow):
         self.create_files()
 
     def create_files(self):
-        details_path =Path('C:\\ProgramData\\iTeachers\\data\\email_details\\detail.txt')
+        details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt')
         details_path.touch(exist_ok=True)
         d_file = open(details_path)
         if os.path.exists(details_path):
@@ -327,7 +327,7 @@ class MainWindow(QMainWindow):
             access the facility. 
                 Attend Today, Acheive Tomorrow!
                                             Thank you! """
-        content_path =Path('C:\\ProgramData\\iTeachers\\data\\email_details\\content.txt')
+        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content.txt')
         content_path.touch(exist_ok=True)
         content_file = open(content_path)
         if os.path.exists(content_path):
@@ -342,7 +342,7 @@ class MainWindow(QMainWindow):
             report or data you requested for. Feel free 
             to contact us for our services at anytime.
                                         Thank you! """
-        content_path =Path('C:\\ProgramData\\iTeachers\\data\\email_details\\content_report.txt')
+        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content_report.txt')
         content_path.touch(exist_ok=True)
         content_file = open(content_path)
         if os.path.exists(content_path):
@@ -355,7 +355,7 @@ class MainWindow(QMainWindow):
         table=self.ui.tableWidget.item(0,0)
         filename = self.ui.filename.text()
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iTeachers\\data\\csv_export\\'+filename+date+'.csv'
+        path = 'C:\\ProgramData\\iAttend\\data\\csv_export\\'+filename+date+'.csv'
         if table and filename:
             details=self.query_database_for_data()
             data = pd.DataFrame(details)
@@ -712,7 +712,8 @@ class Splash_screen(QMainWindow):
         self.ui_splash.progressBar.setValue(counter)
         if counter > 100:
             self.timer.stop()
-            self.close()  
+            time.sleep(10) 
+            self.close() 
             self.main = MainWindow()
             self.main.show()        
         counter +=1
