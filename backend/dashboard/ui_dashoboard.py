@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardmXFQvg.ui'
+## Form generated from reading UI file 'dashoboardOaVsPZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1806,7 +1806,7 @@ class Ui_dashboard(object):
 
         self.retranslateUi(dashboard)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(dashboard)
