@@ -51,7 +51,7 @@ class Registration(QtWidgets.QDialog):
             }
             teacher_json=self.convert_to_json(teacher)
             image = qrcode.make(teacher_json)
-            image.save('C:\\ProgramData\\iteachers\\data\\QR_Codes\\'+register.t_firstname+"_"+register.t_lastname+"_"+register.t_reference+".png")
+            image.save('C:\\ProgramData\\iAttend\\data\\QR_Codes\\'+register.t_firstname+"_"+register.t_lastname+"_"+register.t_reference+".png")
             self.ui_registration.label_notification.setText("Hey! you have successfully registered...")
         else:
             self.ui_registration.label_notification.setText("Oops! provide valid registration details...")
