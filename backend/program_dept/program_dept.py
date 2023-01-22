@@ -38,7 +38,7 @@ class Database(QtWidgets.QDialog):
     
     def create_table(self):
         data = self.ui.add_program.text()
-        db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        db = sqlite3.connect('D:\\Targets\\teachers\\backend\\sqlite\\attendance_system.db')
         cursor = db.cursor()
         try:
             if self.ui.add_program.text():
@@ -52,7 +52,7 @@ class Database(QtWidgets.QDialog):
             self.ui.label_notification.setText(str(e))
 
     def drop_table(self):
-        db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        db = sqlite3.connect('D:\\Targets\\teachers\\backend\\sqlite\\attendance_system.db')
         cursor = db.cursor()
         try:
             table=self.ui.database_tables.currentText()
@@ -67,7 +67,7 @@ class Database(QtWidgets.QDialog):
         
     def refresh(self):
         self.ui.database_tables.clear()
-        con = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+        con = sqlite3.connect('D:\\Targets\\teachers\\backend\\sqlite\\attendance_system.db')
         cursor = con.cursor()
         sql = """SELECT name FROM sqlite_master WHERE type = 'table';"""
         my_cursor = cursor.execute(sql)
