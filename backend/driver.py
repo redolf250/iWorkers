@@ -161,6 +161,8 @@ class MainWindow(QMainWindow):
         self.summary_table(self.query_summary_data())
 
     def query_summary_data(self):
+        self.ui.database_summary.clear()
+        self.ui.database_summary.addItems(self.get_tables())
         table_name = self.ui.database_summary.currentText()
         results= self.query_database("SELECT DISTINCT teacher_reference FROM "+table_name)
         data = []
@@ -499,10 +501,11 @@ class MainWindow(QMainWindow):
         name = self.ui.firstname.text()+" "+self.ui.middlename.text()+" "+self.ui.lastname.text()
         hour=int(dt.now().time().strftime("%I"))
         minute=int(dt.now().time().strftime("%M"))
+        type=str(dt.now().time().strftime("%p"))
         late_hour=self.ui.late_hour.value()
         late_minute=self.ui.late_minutes.value()
         
-        if hour<=late_hour and minute<=late_minute:
+        if hour<=late_hour and minute<=late_minute and type == "AM":
             self.ui.status.setText("Early")
         else:
             self.ui.status.setText("Late")
