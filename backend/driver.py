@@ -115,6 +115,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_summary_load.clicked.connect(self.render_teacher_data)
         self.ui.btn_summary_save.clicked.connect(self.export_summary_data)
         self.ui.btn_summary_browse.clicked.connect(self.load_data)
+
         ##################################################################################################
 
     def load_data(self):
@@ -148,7 +149,7 @@ class MainWindow(QMainWindow):
             details=self.query_summary_data()
             data = pd.DataFrame(details)
             data.to_csv(path,sep=',',index=False,
-            header=['Name','Contact','Date stamp','Time stamp','Date stamp','Time stamp','Early count','Late count','Total count'])
+            header=['Teacher Name','Teacher Contact','Anticipative Date stamp','Anticipative Time stamp','Dilatory Date stamp','Dilatory Time stamp','Early count','Late count','Total count'])
             self.alert = AlertDialog()
             self.alert.content("Hey! data to exported successfully...")
             self.alert.show()
@@ -230,7 +231,7 @@ class MainWindow(QMainWindow):
         self.ui.database_tables.addItems(self.get_tables())
 
     def get_path(self):
-        return 'D:\\Targets\\teachers\\backend\\sqlite\\attendance_system.db'
+        return 'C:\\ProgramData\\iAttend\\data\\database\\attendance_system.db'
 
     def get_tables(self):
         con = sqlite3.connect(self.get_path())
@@ -302,7 +303,7 @@ class MainWindow(QMainWindow):
            
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('csv_export','backup','QR_Codes','email_details')
+        list =('csv_export','backup','QR_Codes','email_details','database','images')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
@@ -491,7 +492,7 @@ class MainWindow(QMainWindow):
         self.ui.refrence.setText(str(data['reference']))
         self.ui.contact.setText(str(data['contact']))
         self.ui.incharge.setText(data['incharge'])
-        self.ui.image.setPixmap(QPixmap.fromImage('D:\\Targets\\teachers\\backend\\images\\assets\\img.jpg'))
+        self.ui.image.setPixmap(QPixmap.fromImage('C:\\ProgramData\\iAttend\\data\\images\\\img.jpg'))
         self.ui.image.setScaledContents(True)
                         
     def mark_attendance_db(self):
@@ -714,8 +715,7 @@ class Splash_screen(QMainWindow):
         global counter
         self.ui_splash.progressBar.setValue(counter)
         if counter > 100:
-            self.timer.stop()
-            time.sleep(10) 
+            self.timer.stop() 
             self.close() 
             self.main = MainWindow()
             self.main.show()        
