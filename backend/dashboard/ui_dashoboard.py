@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardOaVsPZ.ui'
+## Form generated from reading UI file 'dashoboardLlpmwP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -784,7 +784,7 @@ class Ui_dashboard(object):
         self.status_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.late_hour = QSpinBox(self.frame_3)
         self.late_hour.setObjectName(u"late_hour")
-        self.late_hour.setGeometry(QRect(130, 50, 81, 41))
+        self.late_hour.setGeometry(QRect(110, 50, 51, 41))
         font6 = QFont()
         font6.setPointSize(14)
         self.late_hour.setFont(font6)
@@ -797,7 +797,7 @@ class Ui_dashboard(object):
         self.late_hour.setValue(8)
         self.late_minutes = QSpinBox(self.frame_3)
         self.late_minutes.setObjectName(u"late_minutes")
-        self.late_minutes.setGeometry(QRect(400, 50, 81, 41))
+        self.late_minutes.setGeometry(QRect(330, 50, 61, 41))
         self.late_minutes.setFont(font6)
         self.late_minutes.setStyleSheet(u"QSpinBox{\n"
 "color: rgb(255, 255, 255);\n"
@@ -808,7 +808,7 @@ class Ui_dashboard(object):
         self.late_minutes.setValue(30)
         self.contact_2 = QLabel(self.frame_3)
         self.contact_2.setObjectName(u"contact_2")
-        self.contact_2.setGeometry(QRect(20, 50, 101, 41))
+        self.contact_2.setGeometry(QRect(20, 50, 81, 41))
         self.contact_2.setFont(font3)
         self.contact_2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -820,7 +820,7 @@ class Ui_dashboard(object):
         self.contact_2.setAlignment(Qt.AlignCenter)
         self.contact_3 = QLabel(self.frame_3)
         self.contact_3.setObjectName(u"contact_3")
-        self.contact_3.setGeometry(QRect(280, 50, 111, 41))
+        self.contact_3.setGeometry(QRect(230, 50, 91, 41))
         self.contact_3.setFont(font3)
         self.contact_3.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -832,7 +832,7 @@ class Ui_dashboard(object):
         self.contact_3.setAlignment(Qt.AlignCenter)
         self.contact_4 = QLabel(self.frame_3)
         self.contact_4.setObjectName(u"contact_4")
-        self.contact_4.setGeometry(QRect(230, 50, 31, 41))
+        self.contact_4.setGeometry(QRect(180, 50, 31, 41))
         font7 = QFont()
         font7.setFamily(u"MS Shell Dlg 2")
         font7.setPointSize(10)
@@ -854,6 +854,21 @@ class Ui_dashboard(object):
         self.read_only_property.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
         self.read_only_property.setChecked(True)
+        self.time_zone = QComboBox(self.frame_3)
+        self.time_zone.addItem("")
+        self.time_zone.addItem("")
+        self.time_zone.setObjectName(u"time_zone")
+        self.time_zone.setGeometry(QRect(410, 50, 71, 41))
+        self.time_zone.setMinimumSize(QSize(0, 41))
+        self.time_zone.setMaximumSize(QSize(16777215, 41))
+        self.time_zone.setFont(font4)
+        self.time_zone.setStyleSheet(u"QComboBox{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid rgb(45, 45, 45);\n"
+"	padding-left:10px;\n"
+"	border-radius: 5px;\n"
+"}")
+        self.time_zone.setFrame(False)
         self.firstname_23.raise_()
         self.label_notification.raise_()
         self.camera_ip.raise_()
@@ -875,6 +890,7 @@ class Ui_dashboard(object):
         self.contact_3.raise_()
         self.contact_4.raise_()
         self.read_only_property.raise_()
+        self.time_zone.raise_()
 
         self.verticalLayout_6.addWidget(self.frame_3)
 
@@ -1851,6 +1867,9 @@ class Ui_dashboard(object):
         self.contact_3.setText(QCoreApplication.translate("dashboard", u"Minute(s)", None))
         self.contact_4.setText(QCoreApplication.translate("dashboard", u":", None))
         self.read_only_property.setText(QCoreApplication.translate("dashboard", u"Read Only Property", None))
+        self.time_zone.setItemText(0, QCoreApplication.translate("dashboard", u"AM", None))
+        self.time_zone.setItemText(1, QCoreApplication.translate("dashboard", u"PM", None))
+
         self.camera_view.setText("")
         self.label_14.setText(QCoreApplication.translate("dashboard", u"Image Enhancement", None))
         self.brightness_value.setText(QCoreApplication.translate("dashboard", u"0", None))
