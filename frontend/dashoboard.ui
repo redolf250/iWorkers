@@ -1816,9 +1816,9 @@ QPushButton:pressed{
                     <widget class="QSpinBox" name="late_hour">
                      <property name="geometry">
                       <rect>
-                       <x>130</x>
+                       <x>110</x>
                        <y>50</y>
-                       <width>81</width>
+                       <width>51</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -1846,9 +1846,9 @@ color: rgb(255, 255, 255);
                     <widget class="QSpinBox" name="late_minutes">
                      <property name="geometry">
                       <rect>
-                       <x>400</x>
+                       <x>330</x>
                        <y>50</y>
-                       <width>81</width>
+                       <width>61</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -1878,7 +1878,7 @@ color: rgb(255, 255, 255);
                       <rect>
                        <x>20</x>
                        <y>50</y>
-                       <width>101</width>
+                       <width>81</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -1909,9 +1909,9 @@ color: rgb(255, 255, 255);
                     <widget class="QLabel" name="contact_3">
                      <property name="geometry">
                       <rect>
-                       <x>280</x>
+                       <x>230</x>
                        <y>50</y>
-                       <width>111</width>
+                       <width>91</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -1942,7 +1942,7 @@ color: rgb(255, 255, 255);
                     <widget class="QLabel" name="contact_4">
                      <property name="geometry">
                       <rect>
-                       <x>230</x>
+                       <x>180</x>
                        <y>50</y>
                        <width>31</width>
                        <height>41</height>
@@ -1997,6 +1997,54 @@ background-color: rgb(35, 35, 35);</string>
                       <bool>true</bool>
                      </property>
                     </widget>
+                    <widget class="QComboBox" name="time_zone">
+                     <property name="geometry">
+                      <rect>
+                       <x>410</x>
+                       <y>50</y>
+                       <width>71</width>
+                       <height>41</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>41</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>41</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 5px;
+}</string>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>AM</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>PM</string>
+                      </property>
+                     </item>
+                    </widget>
                     <zorder>firstname_23</zorder>
                     <zorder>label_notification</zorder>
                     <zorder>camera_ip</zorder>
@@ -2018,6 +2066,7 @@ background-color: rgb(35, 35, 35);</string>
                     <zorder>contact_3</zorder>
                     <zorder>contact_4</zorder>
                     <zorder>read_only_property</zorder>
+                    <zorder>time_zone</zorder>
                    </widget>
                   </item>
                  </layout>
