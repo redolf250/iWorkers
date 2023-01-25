@@ -506,7 +506,7 @@ class MainWindow(QMainWindow):
         late_hour=self.ui.late_hour.value()
         late_minute=self.ui.late_minutes.value()
         
-        if hour<=late_hour and minute<=late_minute and type == "AM":
+        if hour<=late_hour and minute<=late_minute and type == self.ui.time_zone.currentText():
             self.ui.status.setText("Early")
         else:
             self.ui.status.setText("Late")
