@@ -67,6 +67,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home))
         self.ui.btn_search.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.search))
         self.ui.btn_summary.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.summary))
+        self.ui.btn_batch_job.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.batch))
         ##########################################################################################################
 
         ############################################################################################
@@ -115,8 +116,57 @@ class MainWindow(QMainWindow):
         self.ui.btn_summary_load.clicked.connect(self.render_teacher_data)
         self.ui.btn_summary_save.clicked.connect(self.export_summary_data)
         self.ui.btn_summary_browse.clicked.connect(self.load_data)
-
+        self.ui.btn_batch_browse.clicked.connect(self.load_batch_data)
         ##################################################################################################
+
+    def load_batch_data(self):
+        file_type = "CSV Files(*.csv)"   
+        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
+        if path:
+            self.ui.batch_filename.setText(path[0])
+            try:
+                results_list = []
+                with open(path[0],'r') as filename:
+                    data=csv.reader(filename)
+                    next(data)
+                    for teacher in data:
+                        time = teacher[4].split(':')
+                        time_zone =time[1].split(' ')
+                        time_transform = time[0]+':'+time_zone[0]+':'+'00 '+time_zone[1]
+                        teacher[4] = time_transform
+                        if str(time[0]) <= '08' and str(time[1]) <= '30' and str(time_zone[1]) == 'AM':
+                            teacher.append("Early")
+                        else:
+                            teacher.append("Late")
+                        results_list.append(teacher)
+                        self.batch_table(results_list)
+                    print(results_list)
+            except Exception as e:
+                self.alert = AlertDialog()
+                self.alert.content(str(e))
+                self.alert.show()
+
+    def batch_table(self, details:list):
+        self.ui.batch_tableWidget.setAutoScroll(True)
+        self.ui.batch_tableWidget.setAutoScrollMargin(2)
+        self.ui.batch_tableWidget.setTabKeyNavigation(True)
+        self.ui.batch_tableWidget.setColumnWidth(0,270)
+        self.ui.batch_tableWidget.setColumnWidth(1,210)
+        self.ui.batch_tableWidget.setColumnWidth(2,270)
+        self.ui.batch_tableWidget.setColumnWidth(3,210)
+        self.ui.batch_tableWidget.setColumnWidth(4,210)
+        self.ui.batch_tableWidget.setColumnWidth(5,210)
+        self.ui.batch_tableWidget.setRowCount(len(details))
+        self.ui.batch_tableWidget.verticalHeader().setVisible(True)
+        row_count = 0
+        for data in details:
+            self.ui.batch_tableWidget.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[0])))
+            self.ui.batch_tableWidget.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[1])))
+            self.ui.batch_tableWidget.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
+            self.ui.batch_tableWidget.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
+            self.ui.batch_tableWidget.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
+            self.ui.batch_tableWidget.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
+            row_count = row_count+1
 
     def load_data(self):
         file_type = "CSV Files(*.csv)"   
@@ -136,9 +186,10 @@ class MainWindow(QMainWindow):
                     if len(teacher_list):
                         self.summary_table(teacher_list)
             except Exception as e:
-                print(str(e))
+                self.alert = AlertDialog()
+                self.alert.content(str(e))
+                self.alert.show()
             return path[0]
-        pass
 
     def export_summary_data(self):
         table=self.ui.tableWidget_summary.item(0,0)
