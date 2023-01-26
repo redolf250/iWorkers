@@ -164,7 +164,6 @@ class MainWindow(QMainWindow):
             self.alert.content("Oops! provide a file to load load from...")
             self.alert.show() 
         
-
     def load_batch_data(self):
         file_type = "CSV Files(*.csv)"   
         path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
