@@ -7,6 +7,7 @@
 ################################################################################
 
 import csv
+import datetime
 import os
 import sys
 import cv2
@@ -112,12 +113,57 @@ class MainWindow(QMainWindow):
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         self.ui.database_tables.addItems(self.get_tables())
         self.ui.database_summary.addItems(self.get_tables())
+        self.ui.batch_table.addItems(self.get_tables())
         self.ui.btn_refresh.clicked.connect(self.refresh_tables)
         self.ui.btn_summary_load.clicked.connect(self.render_teacher_data)
         self.ui.btn_summary_save.clicked.connect(self.export_summary_data)
         self.ui.btn_summary_browse.clicked.connect(self.load_data)
         self.ui.btn_batch_browse.clicked.connect(self.load_batch_data)
+        self.ui.btn_start_job.clicked.connect(self.start_insert_job)
         ##################################################################################################
+
+    def start_insert_job(self):
+        path = self.ui.batch_filename.text()
+        db = sqlite3.connect(os.path.abspath(self.get_path()))
+        my_cursor = db.cursor()
+        table = self.ui.batch_table.currentText()
+        if path:
+            try:
+                with open(path,'r') as filename:
+                    data=csv.reader(filename)
+                    next(data)
+                    self.alert = AlertDialog()
+                    self.alert.content("Please the header was skipped...")
+                    self.alert.show()
+                    for teacher in data:
+                        time = teacher[5].split(':')
+                        time_zone =time[1].split(' ')
+                        time_transform = time[0]+':'+time_zone[0]+':'+'00 '+time_zone[1]
+                        teacher[5] = time_transform
+                        batch_hour = self.ui.batch_hour.value()
+                        batch_minute = self.ui.batch_minutes.value()
+                        batch_zone = self.ui.batch_time_zone.currentText()
+                        if str(time[0])<=str(batch_hour) and str(time[1])<=str(batch_minute) and str(batch_zone)==str(time_zone[1]):
+                            teacher.append("Early")
+                        else:
+                            teacher.append("Late")
+                        date=str(teacher[4]).split("-")
+                        transform_date = datetime.date(int(date[0]),int(date[1]),int(date[2])).strftime("%a, %b %d, %Y")
+                        my_cursor.execute("INSERT INTO "+table+"(teacher_reference,teacher_name,teacher_contact,date_stamp,time_stamp,teacher_status,date_stamp_,incharge) VALUES(?,?,?,?,?,?,?,?)",
+                        (teacher[0],teacher[1],teacher[2],teacher[4],teacher[5],teacher[6],transform_date,teacher[3]))
+                        db.commit()
+                        self.ui.batch_notification.setText("Please records are been inserted....")
+                    self.ui.batch_notification.setText("Please records inserted successfully....")
+                        
+            except Exception as e:
+                self.alert = AlertDialog()
+                self.alert.content(str("Oops! invalid file format\n"+str(e)))
+                self.alert.show()
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! provide a file to load load from...")
+            self.alert.show() 
+        
 
     def load_batch_data(self):
         file_type = "CSV Files(*.csv)"   
@@ -129,33 +175,39 @@ class MainWindow(QMainWindow):
                 with open(path[0],'r') as filename:
                     data=csv.reader(filename)
                     next(data)
+                    self.alert = AlertDialog()
+                    self.alert.content("Please the header was skipped...")
+                    self.alert.show()
                     for teacher in data:
-                        time = teacher[4].split(':')
+                        time = teacher[5].split(':')
                         time_zone =time[1].split(' ')
                         time_transform = time[0]+':'+time_zone[0]+':'+'00 '+time_zone[1]
-                        teacher[4] = time_transform
-                        if str(time[0]) <= '08' and str(time[1]) <= '30' and str(time_zone[1]) == 'AM':
+                        teacher[5] = time_transform
+                        batch_hour = self.ui.batch_hour.value()
+                        batch_minute = self.ui.batch_minutes.value()
+                        batch_zone = self.ui.batch_time_zone.currentText()
+                        if str(time[0])<=str(batch_hour) and str(time[1])<=str(batch_minute) and str(batch_zone)==str(time_zone[1]):
                             teacher.append("Early")
                         else:
                             teacher.append("Late")
                         results_list.append(teacher)
                         self.batch_table(results_list)
-                    print(results_list)
             except Exception as e:
                 self.alert = AlertDialog()
-                self.alert.content(str(e))
+                self.alert.content(str("Oops! invalid file format\n"+str(e)))
                 self.alert.show()
 
     def batch_table(self, details:list):
         self.ui.batch_tableWidget.setAutoScroll(True)
         self.ui.batch_tableWidget.setAutoScrollMargin(2)
         self.ui.batch_tableWidget.setTabKeyNavigation(True)
-        self.ui.batch_tableWidget.setColumnWidth(0,270)
-        self.ui.batch_tableWidget.setColumnWidth(1,210)
-        self.ui.batch_tableWidget.setColumnWidth(2,270)
-        self.ui.batch_tableWidget.setColumnWidth(3,210)
-        self.ui.batch_tableWidget.setColumnWidth(4,210)
-        self.ui.batch_tableWidget.setColumnWidth(5,210)
+        self.ui.batch_tableWidget.setColumnWidth(0,140)
+        self.ui.batch_tableWidget.setColumnWidth(1,270)
+        self.ui.batch_tableWidget.setColumnWidth(2,140)
+        self.ui.batch_tableWidget.setColumnWidth(3,270)
+        self.ui.batch_tableWidget.setColumnWidth(4,190)
+        self.ui.batch_tableWidget.setColumnWidth(5,190)
+        self.ui.batch_tableWidget.setColumnWidth(6,140)
         self.ui.batch_tableWidget.setRowCount(len(details))
         self.ui.batch_tableWidget.verticalHeader().setVisible(True)
         row_count = 0
@@ -166,13 +218,14 @@ class MainWindow(QMainWindow):
             self.ui.batch_tableWidget.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
             self.ui.batch_tableWidget.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
             self.ui.batch_tableWidget.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
+            self.ui.batch_tableWidget.setItem(row_count,6,QtWidgets.QTableWidgetItem(str(data[6])))
             row_count = row_count+1
 
     def load_data(self):
         file_type = "CSV Files(*.csv)"   
         path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
         if path:
-            self.ui.summary_browse.setText(path[0])
+            self.ui.summary_browse.setText(os.path.basename(str(path[0])))
             try:
                 with open(path[0],'r') as data:
                     self.alert = AlertDialog()
@@ -187,7 +240,7 @@ class MainWindow(QMainWindow):
                         self.summary_table(teacher_list)
             except Exception as e:
                 self.alert = AlertDialog()
-                self.alert.content(str(e))
+                self.alert.content(str("Oops! invalid file format\n"+str(e)))
                 self.alert.show()
             return path[0]
 
