@@ -606,7 +606,7 @@ class MainWindow(QMainWindow):
         self.ui.refrence.setText(str(data['reference']))
         self.ui.contact.setText(str(data['contact']))
         self.ui.incharge.setText(data['incharge'])
-        self.ui.image.setPixmap(QPixmap.fromImage('C:\\ProgramData\\iAttend\\data\\images\\\img.jpg'))
+        self.ui.image.setPixmap(QPixmap.fromImage('C:\\ProgramData\\iAttend\\data\\images\\image.jpg'))
         self.ui.image.setScaledContents(True)
                         
     def mark_attendance_db(self):
@@ -689,9 +689,8 @@ class MainWindow(QMainWindow):
 
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame)
-            self.timer.start(3)
+            self.saveTimer.timeout.connect(self.update_frame)
+            self.saveTimer.start(3)
         else:
             self.show_alert = AlertDialog()
             self.show_alert.content("Oops! your have no active cameras available")  
