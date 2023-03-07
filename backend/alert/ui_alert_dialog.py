@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'alert_dialogYKFbEn.ui'
+## Form generated from reading UI file 'alert_dialogEjuCPf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QMetaObject, QRect, QSize)
-from PySide2.QtGui import (QFont,
-    QPixmap)
+from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
+    QRect, QSize, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
+    QRadialGradient)
 from PySide2.QtWidgets import *
 
 import asset_rc
@@ -132,6 +134,7 @@ class Ui_AlertDialog(object):
         font.setBold(False)
         font.setWeight(50)
         self.content.setFont(font)
+        self.content.setAlignment(Qt.AlignCenter)
         self.content.setWordWrap(True)
 
         self.horizontalLayout_2.addWidget(self.content)

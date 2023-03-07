@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardHqNbuc.ui'
+## Form generated from reading UI file 'dashoboardylZPkK.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -16,12 +16,13 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 import asset_rc
+import asset_rc
 
 class Ui_dashboard(object):
     def setupUi(self, dashboard):
         if dashboard.objectName():
             dashboard.setObjectName(u"dashboard")
-        dashboard.resize(1520, 1000)
+        dashboard.resize(1500, 1000)
         dashboard.setMinimumSize(QSize(1500, 1000))
         dashboard.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(dashboard)
@@ -30,7 +31,7 @@ class Ui_dashboard(object):
         self.centralwidget.setStyleSheet(u"")
         self.drop_shadow_layout = QFrame(self.centralwidget)
         self.drop_shadow_layout.setObjectName(u"drop_shadow_layout")
-        self.drop_shadow_layout.setGeometry(QRect(0, 0, 1541, 1000))
+        self.drop_shadow_layout.setGeometry(QRect(0, 0, 1521, 1000))
         self.drop_shadow_layout.setMinimumSize(QSize(1280, 1000))
         self.drop_shadow_layout.setStyleSheet(u"")
         self.drop_shadow_layout.setFrameShape(QFrame.NoFrame)
@@ -49,8 +50,9 @@ class Ui_dashboard(object):
         self.title_bar.setFrameShape(QFrame.NoFrame)
         self.title_bar.setFrameShadow(QFrame.Raised)
         self.horizontalLayout = QHBoxLayout(self.title_bar)
+        self.horizontalLayout.setSpacing(8)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 6, 0)
+        self.horizontalLayout.setContentsMargins(2, 0, 9, 0)
         self.other_fields = QFrame(self.title_bar)
         self.other_fields.setObjectName(u"other_fields")
         self.other_fields.setFrameShape(QFrame.NoFrame)
@@ -114,13 +116,32 @@ class Ui_dashboard(object):
 
         self.controls_frame = QFrame(self.title_bar)
         self.controls_frame.setObjectName(u"controls_frame")
-        self.controls_frame.setMinimumSize(QSize(100, 0))
-        self.controls_frame.setMaximumSize(QSize(100, 16777215))
+        self.controls_frame.setMinimumSize(QSize(80, 0))
+        self.controls_frame.setMaximumSize(QSize(80, 16777215))
         self.controls_frame.setFrameShape(QFrame.NoFrame)
         self.controls_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.controls_frame)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(-1, -1, 5, -1)
+        self.btn_minimize = QPushButton(self.controls_frame)
+        self.btn_minimize.setObjectName(u"btn_minimize")
+        self.btn_minimize.setMinimumSize(QSize(16, 16))
+        self.btn_minimize.setMaximumSize(QSize(17, 17))
+        self.btn_minimize.setStyleSheet(u"QPushButton{\n"
+"	background-color: rgb(85, 255, 127);\n"
+"	border:none;\n"
+"	border-radius: 8px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{	\n"
+"	background-color: rgba(85, 255, 127,150);\n"
+"	\n"
+"}")
+
+        self.horizontalLayout_6.addWidget(self.btn_minimize)
+
         self.btn_maximize = QPushButton(self.controls_frame)
         self.btn_maximize.setObjectName(u"btn_maximize")
-        self.btn_maximize.setGeometry(QRect(40, 20, 16, 16))
         self.btn_maximize.setMinimumSize(QSize(16, 16))
         self.btn_maximize.setMaximumSize(QSize(17, 17))
         self.btn_maximize.setStyleSheet(u"QPushButton{\n"
@@ -134,24 +155,11 @@ class Ui_dashboard(object):
 "	background-color: rgba(255, 170, 0,150);\n"
 "	\n"
 "}")
-        self.btn_minimize = QPushButton(self.controls_frame)
-        self.btn_minimize.setObjectName(u"btn_minimize")
-        self.btn_minimize.setGeometry(QRect(10, 20, 16, 16))
-        self.btn_minimize.setMinimumSize(QSize(16, 16))
-        self.btn_minimize.setMaximumSize(QSize(17, 17))
-        self.btn_minimize.setStyleSheet(u"QPushButton{\n"
-"	background-color: rgb(85, 255, 127);\n"
-"	border:none;\n"
-"	border-radius: 8px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{	\n"
-"	background-color: rgba(85, 255, 127,150);\n"
-"	\n"
-"}")
+
+        self.horizontalLayout_6.addWidget(self.btn_maximize)
+
         self.btn_close = QPushButton(self.controls_frame)
         self.btn_close.setObjectName(u"btn_close")
-        self.btn_close.setGeometry(QRect(70, 20, 16, 16))
         self.btn_close.setMinimumSize(QSize(16, 16))
         self.btn_close.setMaximumSize(QSize(17, 17))
         self.btn_close.setStyleSheet(u"QPushButton{\n"
@@ -164,6 +172,9 @@ class Ui_dashboard(object):
 "	background-color: rgba(255, 0, 0,150);\n"
 "	\n"
 "}")
+
+        self.horizontalLayout_6.addWidget(self.btn_close)
+
 
         self.horizontalLayout.addWidget(self.controls_frame)
 
@@ -932,7 +943,7 @@ class Ui_dashboard(object):
         self.verticalLayout_7 = QVBoxLayout(self.right_frame)
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_7.setContentsMargins(0, 0, 5, 0)
         self.camera_frame = QFrame(self.right_frame)
         self.camera_frame.setObjectName(u"camera_frame")
         self.camera_frame.setMinimumSize(QSize(0, 700))
@@ -988,6 +999,7 @@ class Ui_dashboard(object):
         self.gridLayout_2 = QGridLayout(self.frame_4)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setVerticalSpacing(20)
+        self.gridLayout_2.setContentsMargins(15, -1, -1, -1)
         self.label_14 = QLabel(self.frame_4)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setMinimumSize(QSize(0, 20))
@@ -1133,7 +1145,7 @@ class Ui_dashboard(object):
         self.label_18.setAlignment(Qt.AlignCenter)
         self.scan_range_label = QLabel(self.frame_5)
         self.scan_range_label.setObjectName(u"scan_range_label")
-        self.scan_range_label.setGeometry(QRect(20, 160, 431, 51))
+        self.scan_range_label.setGeometry(QRect(20, 160, 411, 51))
         self.scan_range_label.setFont(font3)
         self.scan_range_label.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1150,7 +1162,7 @@ class Ui_dashboard(object):
         self.label_42.setPixmap(QPixmap(u":/icons/asset/camera.svg"))
         self.btn_scan_range = QPushButton(self.frame_5)
         self.btn_scan_range.setObjectName(u"btn_scan_range")
-        self.btn_scan_range.setGeometry(QRect(300, 80, 151, 51))
+        self.btn_scan_range.setGeometry(QRect(300, 80, 131, 51))
         self.btn_scan_range.setFont(font4)
         self.btn_scan_range.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1230,7 +1242,7 @@ class Ui_dashboard(object):
         self.label_32.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.batch_notification = QLabel(self.frame_9)
         self.batch_notification.setObjectName(u"batch_notification")
-        self.batch_notification.setGeometry(QRect(1150, 10, 281, 91))
+        self.batch_notification.setGeometry(QRect(1150, 10, 271, 91))
         self.batch_notification.setFont(font3)
         self.batch_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1860,7 +1872,7 @@ class Ui_dashboard(object):
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.label_31 = QLabel(self.frame_7)
         self.label_31.setObjectName(u"label_31")
-        self.label_31.setGeometry(QRect(0, 0, 1421, 91))
+        self.label_31.setGeometry(QRect(0, 0, 1411, 91))
         self.label_31.setFont(font9)
         self.label_31.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1949,7 +1961,7 @@ class Ui_dashboard(object):
         self.btn_summary_load.setFlat(True)
         self.summary_browse = QLineEdit(self.frame_7)
         self.summary_browse.setObjectName(u"summary_browse")
-        self.summary_browse.setGeometry(QRect(970, 20, 281, 51))
+        self.summary_browse.setGeometry(QRect(960, 20, 281, 51))
         self.summary_browse.setFont(font4)
         self.summary_browse.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1968,7 +1980,7 @@ class Ui_dashboard(object):
         self.summary_browse.setClearButtonEnabled(True)
         self.btn_summary_browse = QPushButton(self.frame_7)
         self.btn_summary_browse.setObjectName(u"btn_summary_browse")
-        self.btn_summary_browse.setGeometry(QRect(1260, 20, 141, 51))
+        self.btn_summary_browse.setGeometry(QRect(1250, 20, 141, 51))
         self.btn_summary_browse.setFont(font4)
         self.btn_summary_browse.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2074,8 +2086,8 @@ class Ui_dashboard(object):
         dashboard.setWindowTitle(QCoreApplication.translate("dashboard", u"MainWindow", None))
         self.label.setText("")
         self.label_4.setText(QCoreApplication.translate("dashboard", u"iAttend", None))
-        self.btn_maximize.setText("")
         self.btn_minimize.setText("")
+        self.btn_maximize.setText("")
         self.btn_close.setText("")
         self.btn_home.setText("")
         self.btn_search.setText("")

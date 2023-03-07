@@ -120,6 +120,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_summary_browse.clicked.connect(self.load_data)
         self.ui.btn_batch_browse.clicked.connect(self.load_batch_data)
         self.ui.btn_start_job.clicked.connect(self.start_insert_job)
+        self.create_database()
         ##################################################################################################
 
     def start_insert_job(self):
@@ -333,6 +334,12 @@ class MainWindow(QMainWindow):
         self.ui.database_tables.clear()
         self.ui.database_tables.addItems(self.get_tables())
 
+    def create_database(self):
+        con = sqlite3.connect(self.get_path())
+        cursor = con.cursor()
+        cursor.execute("CREATE TABLE IF NOT EXISTS tb_attendance(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,teacher_reference TEXT,teacher_name TEXT, teacher_contact TEXT,date_stamp TEXT, time_stamp TEXT,teacher_status TEXT,date_stamp_ TEXT,incharge TEXT)")  
+        con.commit()
+
     def get_path(self):
         return 'C:\\ProgramData\\iAttend\\data\\database\\attendance_system.db'
 
@@ -382,8 +389,10 @@ class MainWindow(QMainWindow):
             db.commit()
             return details
 
-    def get_active_cameras(self,camera:list):
+    def clear_camera_comboBoxes(self):
         self.ui.comboBox.clear()
+
+    def get_active_cameras(self,camera:list):
         self.ui.comboBox.addItems(camera)
         count = [self.ui.comboBox.itemText(i) for i in range(self.ui.comboBox.count())]
         self.ui.scan_range_label.setText("Active camera(s): "+str(len(count)))
@@ -392,6 +401,8 @@ class MainWindow(QMainWindow):
     def camera_thread(self):
         scan_range = self.ui.scan_range.text()
         if scan_range:
+            self.clear_camera_comboBoxes()
+            self.ui.scan_range_label.setText('')
             self.active = ActiveCameras(scan_range)
             self.active.start()
             self.active.cameras.connect(self.get_active_cameras)
@@ -745,11 +756,15 @@ class MainWindow(QMainWindow):
         
     def stop_webcam(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_view.setPixmap(QPixmap())
-        self.ui.camera_view.setAlignment(Qt.AlignCenter)
-        self.timer.stop()
+        if self.saveTimer.isActive():
+            self.show_alert.content("Hey! wait a second while system\nrelease camera") 
+            self.show_alert.show()
+            self.ui.camera_view.setPixmap(u":/icons/asset/camera-off.svg")
+            self.ui.camera_view.setScaledContents(False)
+            self.saveTimer.stop() 
+        else:
+            self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
+            self.show_alert.show()  
 
     def show_info(self, content:str):
         self.ui.label_notification.setText(content)       

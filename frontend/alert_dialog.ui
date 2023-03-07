@@ -233,6 +233,9 @@ QPushButton:hover{
            <property name="text">
             <string> Something went wrong</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
            <property name="wordWrap">
             <bool>true</bool>
            </property>
@@ -313,7 +316,6 @@ QPushButton:pressed{
  </widget>
  <resources>
   <include location="../resource/asset.qrc"/>
-  <include location="C:/users/btc omen/appdata/local/programs/python/python36/lib/site-packages/resource/asset.qrc"/>
  </resources>
  <connections/>
 </ui>

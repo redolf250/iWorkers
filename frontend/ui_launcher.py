@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'launcherDPSyuO.ui'
+## Form generated from reading UI file 'launcher.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.1
+## Created by: Qt User Interface Compiler version 6.3.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
-from PySide2.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QMainWindow,
+    QProgressBar, QSizePolicy, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        if MainWindow.objectName():
+        if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(838, 546)
         self.centralwidget = QWidget(MainWindow)
@@ -37,7 +39,7 @@ class Ui_MainWindow(object):
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(0, 180, 821, 91))
         font = QFont()
-        font.setFamily(u"Modern No. 20")
+        font.setFamilies([u"Modern No. 20"])
         font.setPointSize(40)
         font.setItalic(False)
         self.label.setFont(font)
@@ -48,7 +50,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(0, 260, 821, 21))
         font1 = QFont()
-        font1.setFamily(u"Modern No. 20")
+        font1.setFamilies([u"Modern No. 20"])
         font1.setPointSize(14)
         font1.setItalic(False)
         self.label_2.setFont(font1)

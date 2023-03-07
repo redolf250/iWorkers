@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1520</width>
+    <width>1500</width>
     <height>1000</height>
    </rect>
   </property>
@@ -37,7 +37,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1541</width>
+      <width>1521</width>
       <height>1000</height>
      </rect>
     </property>
@@ -100,14 +100,17 @@ background-color: rgb(35, 35, 35);</string>
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
         <property name="leftMargin">
-         <number>0</number>
+         <number>2</number>
         </property>
         <property name="topMargin">
          <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>6</number>
+         <number>9</number>
         </property>
         <property name="bottomMargin">
          <number>0</number>
@@ -246,13 +249,13 @@ padding-left:5px;</string>
          <widget class="QFrame" name="controls_frame">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>16777215</height>
            </size>
           </property>
@@ -262,29 +265,57 @@ padding-left:5px;</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="btn_maximize">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>20</y>
-             <width>16</width>
-             <height>16</height>
-            </rect>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="rightMargin">
+            <number>5</number>
            </property>
-           <property name="minimumSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>17</width>
-             <height>17</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
+           <item>
+            <widget class="QPushButton" name="btn_minimize">
+             <property name="minimumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+	background-color: rgb(85, 255, 127);
+	border:none;
+	border-radius: 8px;
+}
+
+QPushButton:hover{	
+	background-color: rgba(85, 255, 127,150);
+	
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_maximize">
+             <property name="minimumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
 	
 	background-color: rgb(255, 170, 0);
 	border:none;
@@ -295,71 +326,28 @@ QPushButton:hover{
 	background-color: rgba(255, 170, 0,150);
 	
 }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="btn_minimize">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>16</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>17</width>
-             <height>17</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-	background-color: rgb(85, 255, 127);
-	border:none;
-	border-radius: 8px;
-}
-
-QPushButton:hover{	
-	background-color: rgba(85, 255, 127,150);
-	
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="btn_close">
-           <property name="geometry">
-            <rect>
-             <x>70</x>
-             <y>20</y>
-             <width>16</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>17</width>
-             <height>17</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_close">
+             <property name="minimumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
 	background-color: rgb(255, 0, 0);
 	border:none;
 	border-radius: 8px;
@@ -369,11 +357,13 @@ QPushButton:hover{
 	background-color: rgba(255, 0, 0,150);
 	
 }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -2148,7 +2138,7 @@ background-color: rgb(35, 35, 35);</string>
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>0</number>
+                   <number>5</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
@@ -2284,6 +2274,9 @@ background-color: rgb(35, 35, 35);</string>
                            <enum>QFrame::Raised</enum>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_2">
+                           <property name="leftMargin">
+                            <number>15</number>
+                           </property>
                            <property name="verticalSpacing">
                             <number>20</number>
                            </property>
@@ -2619,7 +2612,7 @@ background-color: rgb(35, 35, 35);</string>
                             <rect>
                              <x>20</x>
                              <y>160</y>
-                             <width>431</width>
+                             <width>411</width>
                              <height>51</height>
                             </rect>
                            </property>
@@ -2671,7 +2664,7 @@ background-color: rgb(35, 35, 35);</string>
                             <rect>
                              <x>300</x>
                              <y>80</y>
-                             <width>151</width>
+                             <width>131</width>
                              <height>51</height>
                             </rect>
                            </property>
@@ -2834,7 +2827,7 @@ QLineEdit:focus{
                    <rect>
                     <x>1150</x>
                     <y>10</y>
-                    <width>281</width>
+                    <width>271</width>
                     <height>91</height>
                    </rect>
                   </property>
@@ -4393,7 +4386,7 @@ QPushButton:pressed{
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1421</width>
+                    <width>1411</width>
                     <height>91</height>
                    </rect>
                   </property>
@@ -4592,7 +4585,7 @@ QPushButton:pressed{
                  <widget class="QLineEdit" name="summary_browse">
                   <property name="geometry">
                    <rect>
-                    <x>970</x>
+                    <x>960</x>
                     <y>20</y>
                     <width>281</width>
                     <height>51</height>
@@ -4629,7 +4622,7 @@ QLineEdit:focus{
                  <widget class="QPushButton" name="btn_summary_browse">
                   <property name="geometry">
                    <rect>
-                    <x>1260</x>
+                    <x>1250</x>
                     <y>20</y>
                     <width>141</width>
                     <height>51</height>
@@ -4847,6 +4840,7 @@ QPushButton:pressed{
  </widget>
  <resources>
   <include location="../resource/asset.qrc"/>
+  <include location="../../Commons/resource/asset.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1018</width>
-    <height>600</height>
+    <width>838</width>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,8 +33,8 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>190</y>
-         <width>991</width>
+         <y>180</y>
+         <width>821</width>
          <height>91</height>
         </rect>
        </property>
@@ -62,8 +62,8 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>270</y>
-         <width>1001</width>
+         <y>260</y>
+         <width>821</width>
          <height>21</height>
         </rect>
        </property>
@@ -75,7 +75,8 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
+        <string notr="true">
+color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;There's No Time Like The Present and No Substitute For Being Present !&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -91,7 +92,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>570</y>
+         <y>520</y>
          <width>1001</width>
          <height>16</height>
         </rect>
