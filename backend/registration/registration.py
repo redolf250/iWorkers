@@ -1,17 +1,9 @@
-import json
-import math
-import qrcode
-import numpy as np
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
-from model.teacher import Registration_
-from registration.ui_registration import Ui_Registration
+from packages.pyqt import *
+from packages.registration import *
 
-class Registration(QtWidgets.QDialog):
+class Registration(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_registration = Ui_Registration()
         self.ui_registration.setupUi(self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
