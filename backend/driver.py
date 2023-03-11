@@ -6,40 +6,11 @@
 ##
 ################################################################################
 
-import csv
-import datetime
-import os
-import sys
-import cv2
-import json
-import time
-import shutil
-import winsound
-import numpy as np
-import pandas as pd
-from pathlib import Path
-from cv2 import VideoCapture
-
-import pyshine as ps
-from pyzbar.pyzbar import *
-from datetime import datetime as dt
-
-from PySide2 import QtCore
-from PySide2.QtWidgets import *
-from PySide2.QtCore import (QPoint,Qt, QTimer)
-from PySide2.QtGui import (QColor, QPixmap, QImage)
-
-from mail.mail import Mail
-from scan_devices.camera import ActiveCameras
-from model.attendance import Attendance
-from alert.alert_dialog import *
-from program_dept.program_dept import *
-from launcher.ui_launcher import Ui_MainWindow
-from dashboard.ui_dashoboard import Ui_dashboard
-from registration.registration import *
-
-GLOBAL_STATE = 0
-counter = 0
+from packages.pyqt import *
+from packages.system import *
+from packages.driver import *
+from packages.globals import *
+from packages.processing import *
 
 class MainWindow(QMainWindow):
     def __init__(self, **kwargs):
@@ -72,6 +43,7 @@ class MainWindow(QMainWindow):
         ##########################################################################################################
 
         ############################################################################################
+        self.create_database()
         self.create_program_data_dir()
         self.program_dept = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.program_dept.show())
@@ -120,9 +92,12 @@ class MainWindow(QMainWindow):
         self.ui.btn_summary_browse.clicked.connect(self.load_data)
         self.ui.btn_batch_browse.clicked.connect(self.load_batch_data)
         self.ui.btn_start_job.clicked.connect(self.start_insert_job)
-        self.create_database()
         ##################################################################################################
 
+    def resource_path(self,relative_path):
+        path_to_img= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
+        return path_to_img
+        
     def start_insert_job(self):
         path = self.ui.batch_filename.text()
         db = sqlite3.connect(os.path.abspath(self.get_path()))
@@ -212,21 +187,21 @@ class MainWindow(QMainWindow):
         self.ui.batch_tableWidget.verticalHeader().setVisible(True)
         row_count = 0
         for data in details:
-            self.ui.batch_tableWidget.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[0])))
-            self.ui.batch_tableWidget.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[1])))
-            self.ui.batch_tableWidget.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
-            self.ui.batch_tableWidget.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
-            self.ui.batch_tableWidget.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
+            self.ui.batch_tableWidget.setItem(row_count,0,QTableWidgetItem(str(data[0])))
+            self.ui.batch_tableWidget.setItem(row_count,1,QTableWidgetItem(str(data[1])))
+            self.ui.batch_tableWidget.setItem(row_count,2,QTableWidgetItem(str(data[2])))
+            self.ui.batch_tableWidget.setItem(row_count,3,QTableWidgetItem(str(data[3])))
+            self.ui.batch_tableWidget.setItem(row_count,4,QTableWidgetItem(str(data[4])))
             self.ui.batch_tableWidget.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
-            self.ui.batch_tableWidget.setItem(row_count,6,QtWidgets.QTableWidgetItem(str(data[6])))
+            self.ui.batch_tableWidget.setItem(row_count,6,QTableWidgetItem(str(data[6])))
             row_count = row_count+1
 
     def load_data(self):
         file_type = "CSV Files(*.csv)"   
-        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
+        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Documents",file_type)
         if path:
-            self.ui.summary_browse.setText(os.path.basename(str(path[0])))
             try:
+                self.ui.summary_browse.setText(os.path.basename(str(path[0])))
                 with open(path[0],'r') as data:
                     self.alert = AlertDialog()
                     self.alert.content("Please the header was skipped...")
@@ -240,9 +215,10 @@ class MainWindow(QMainWindow):
                         self.summary_table(teacher_list)
             except Exception as e:
                 self.alert = AlertDialog()
-                self.alert.content(str("Oops! invalid file format\n"+str(e)))
+                self.alert.content(str("Oops! invalid file format\n"))
                 self.alert.show()
             return path[0]
+        pass
 
     def export_summary_data(self):
         table=self.ui.tableWidget_summary.item(0,0)
@@ -508,13 +484,13 @@ class MainWindow(QMainWindow):
         self.ui.tableWidget.verticalHeader().setVisible(True)
         row_count = 0
         for data in details:
-            self.ui.tableWidget.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[1])))
-            self.ui.tableWidget.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[2])))
-            self.ui.tableWidget.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[3])))
-            self.ui.tableWidget.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[7])))
-            self.ui.tableWidget.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[5])))
-            self.ui.tableWidget.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[6])))
-            self.ui.tableWidget.setItem(row_count,6,QtWidgets.QTableWidgetItem(str(data[8])))
+            self.ui.tableWidget.setItem(row_count,0,QTableWidgetItem(str(data[1])))
+            self.ui.tableWidget.setItem(row_count,1,QTableWidgetItem(str(data[2])))
+            self.ui.tableWidget.setItem(row_count,2,QTableWidgetItem(str(data[3])))
+            self.ui.tableWidget.setItem(row_count,3,QTableWidgetItem(str(data[7])))
+            self.ui.tableWidget.setItem(row_count,4,QTableWidgetItem(str(data[5])))
+            self.ui.tableWidget.setItem(row_count,5,QTableWidgetItem(str(data[6])))
+            self.ui.tableWidget.setItem(row_count,6,QTableWidgetItem(str(data[8])))
             row_count = row_count+1
     
     def fetch_details_for_card_view(self):
@@ -533,10 +509,10 @@ class MainWindow(QMainWindow):
                     self.ui.db_contact.setText(str(db_data[3]))
                     self.ui.status.setText(str(db_data[6]))
                     self.ui.db_incharge.setText(db_data[8]) 
-                    self.ui.db_image_data.setPixmap(QPixmap.fromImage(r'backend\\images\\assets\\img.jpg'))
+                    self.ui.db_image_data.setPixmap(QPixmap.fromImage(self.resource_path(r'image.jpg')))
                     self.ui.db_image_data.setScaledContents(True)  
                 else:
-                    self.alert_builder("Student details not found. Please enter\nyour details to register!")
+                    self.alert_builder("Details not found. Please enter\nyour details to register!")
                 
             else:
                 self.alert_builder("Oops! search field can't be empty.")
@@ -588,14 +564,15 @@ class MainWindow(QMainWindow):
         self.alert.show()
         
     def loadUi_file(self):
-        self.ui.firstname.setText("")
-        self.ui.middlename.setText("")
-        self.ui.lastname.setText("")
-        self.ui.refrence.setText("")
-        self.ui.contact.setText("")
-        self.ui.incharge.setText("")
-        self.ui.status.setText("")
-        self.ui.image.setPixmap("")
+        self.ui.firstname.setText("Firtname")
+        self.ui.middlename.setText("Middlename")
+        self.ui.lastname.setText("Lastname")
+        self.ui.refrence.setText("Refrence")
+        self.ui.contact.setText("Contact")
+        self.ui.incharge.setText("Incharge")
+        self.ui.status.setText("Status")
+        self.ui.image.setPixmap(u":/icons/asset/image.svg")
+        self.ui.image.setScaledContents(False)
         self.ui.label_notification.setText("Notification")
 
     def retreive_student_details(self,data):
@@ -606,7 +583,7 @@ class MainWindow(QMainWindow):
         self.ui.refrence.setText(str(data['reference']))
         self.ui.contact.setText(str(data['contact']))
         self.ui.incharge.setText(data['incharge'])
-        self.ui.image.setPixmap(QPixmap.fromImage('C:\\ProgramData\\iAttend\\data\\images\\image.jpg'))
+        self.ui.image.setPixmap(QPixmap.fromImage(self.resource_path(r'image.jpg')))
         self.ui.image.setScaledContents(True)
                         
     def mark_attendance_db(self):
