@@ -1,20 +1,11 @@
 
-import os
-import requests
+from packages.mail import *
+from packages.pyqt import *
+from packages.system import *
 
-from mail.thread import MailThread
-from mail.thread import QRCodeMailThread
-
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
-from mail.ui_mail import Ui_Mail
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-
-class Mail(QtWidgets.QDialog):
+class Mail(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_mail = Ui_Mail()
         self.ui_mail.setupUi(self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
