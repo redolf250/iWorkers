@@ -1,7 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./backend/camera_three",
-        "./backend/model",
-        "./backend/system_paths"
-    ]
-}
