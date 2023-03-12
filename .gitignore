@@ -1,1 +1,6 @@
 test_code/
+build/
+dist/
+.vscode/
+iAttend.spec
+icon.ico
